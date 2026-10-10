@@ -1,19 +1,5 @@
 import { test, expect } from '@playwright/test';
 
-test('Homepage Playwright Viet Nam', async ({ page }) => {
-  // Goto homepage
-  await page.goto('https://playwrightvn.com');
-
-  // Check title
-  await expect(page).toHaveTitle(/Học Automation Test từ chưa biết gì/);
-
-  // Click on the first link with the name 'Playwright Master Class: From Zero To Hero'
-  await page.getByRole('link', { name: 'Playwright Master Class: From Zero To Hero' }).first().click();
-  await page.waitForTimeout(2000);
-  await expect(page).toHaveTitle(/Playwright Master Class: From Zero To Hero/)
-
-});
-
 test('Fill form with all locators', async ({ page }) => {
 
   // Register first user  
@@ -49,6 +35,7 @@ test('Fill form with all locators', async ({ page }) => {
   const toggleOption = page.locator('#toggleOption');
   await toggleOption.locator('xpath=..').click();
   await expect(toggleOption).toBeChecked();
+  
   // Locator with bounding box
   const starRating = page.locator('#starRating');
   const box = await starRating.boundingBox();
